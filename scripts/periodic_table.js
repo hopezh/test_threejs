@@ -3,13 +3,13 @@
 // import { TrackballControls } from './jsm/controls/TrackballControls.js';
 // import { CSS3DRenderer, CSS3DObject } from './jsm/renderers/CSS3DRenderer.js';
 
-import * as THREE from "../build/three.module.js";
-import { TWEEN } from "../examples/jsm/libs/tween.module.min.js";
-import { TrackballControls } from "../examples/jsm/controls/TrackballControls.js";
+import * as THREE from "../../build/three.module.js";
+import { TWEEN } from "../../examples/jsm/libs/tween.module.min.js";
+import { TrackballControls } from "../../examples/jsm/controls/TrackballControls.js";
 import {
   CSS3DRenderer,
   CSS3DObject,
-} from "../examples/jsm/renderers/CSS3DRenderer.js";
+} from "../../examples/jsm/renderers/CSS3DRenderer.js";
 
 // table : contents of each elment
 const table = [
