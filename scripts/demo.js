@@ -257,17 +257,20 @@ function init() {
 
   //load terra model
 
-  loader.load("../examples/models/3dm/terra_simplified.3dm", function (object) {
-    object.traverse(function (child) {
-      if (child instanceof THREE.Mesh) {
-        child.material = meshMaterial_b;
-      }
-    });
-    simplified = object;
-    simplified.visible = false;
-    scene.add(simplified);
-    console.log("...simplified building added");
-  });
+  loader.load(
+    "../examples/models/3dm/terra_3dm/terra_simplified.3dm",
+    function (object) {
+      object.traverse(function (child) {
+        if (child instanceof THREE.Mesh) {
+          child.material = meshMaterial_b;
+        }
+      });
+      simplified = object;
+      simplified.visible = false;
+      scene.add(simplified);
+      console.log("...simplified building added");
+    }
+  );
 
   // loader.load('./models/terra_pv.3dm',
   //             function ( object ) {
@@ -283,31 +286,37 @@ function init() {
   //             } );
 
   // load sun path
-  loader.load("../examples/models/3dm/terra_sunpath.3dm", function (object) {
-    object.traverse(function (child) {
-      if (child instanceof THREE.Line) {
-        child.material = line_mat;
-      }
-    });
-    scene.add(object);
-    console.log("...sunpath loaded");
-  });
+  loader.load(
+    "../examples/models/3dm/terra_3dm/terra_sunpath.3dm",
+    function (object) {
+      object.traverse(function (child) {
+        if (child instanceof THREE.Line) {
+          child.material = line_mat;
+        }
+      });
+      scene.add(object);
+      console.log("...sunpath loaded");
+    }
+  );
 
-  loader.load("../examples/models/3dm/terra_num.3dm", function (object) {
-    object.traverse(function (child) {
-      if (child instanceof THREE.Mesh) {
-        child.material = meshMaterial_c;
-        child.material.side = THREE.DoubleSide;
-      }
-    });
-    scene.add(object);
-    console.log("...numbers added");
-  });
+  loader.load(
+    "../examples/models/3dm/terra_3dm/terra_num.3dm",
+    function (object) {
+      object.traverse(function (child) {
+        if (child instanceof THREE.Mesh) {
+          child.material = meshMaterial_c;
+          child.material.side = THREE.DoubleSide;
+        }
+      });
+      scene.add(object);
+      console.log("...numbers added");
+    }
+  );
 
   // load results
   for (var i = 1; i <= 12; i++) {
     loader.load(
-      "../examples/models/3dm/terra_sunhour_" + i.toString() + ".3dm",
+      "../examples/models/3dm/terra_3dm/terra_sunhour_" + i.toString() + ".3dm",
       function (object) {
         object.traverse(function (child) {
           if (child instanceof THREE.Mesh) {
