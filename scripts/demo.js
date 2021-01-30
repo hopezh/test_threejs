@@ -170,7 +170,6 @@ function init() {
   const loader = new Rhino3dmLoader();
   loader.setLibraryPath("../examples/jsm/libs/rhino3dm/");
 
-
   // ---- test loading 3dm files
 
   // loader.load('./models/building.3dm',
@@ -258,7 +257,7 @@ function init() {
 
   //load terra model
 
-  loader.load("./models/terra_simplified.3dm", function (object) {
+  loader.load("../examples/models/3dm/terra_simplified.3dm", function (object) {
     object.traverse(function (child) {
       if (child instanceof THREE.Mesh) {
         child.material = meshMaterial_b;
@@ -284,7 +283,7 @@ function init() {
   //             } );
 
   // load sun path
-  loader.load("./models/terra_sunpath.3dm", function (object) {
+  loader.load("../examples/models/3dm/terra_sunpath.3dm", function (object) {
     object.traverse(function (child) {
       if (child instanceof THREE.Line) {
         child.material = line_mat;
@@ -294,7 +293,7 @@ function init() {
     console.log("...sunpath loaded");
   });
 
-  loader.load("./models/terra_num.3dm", function (object) {
+  loader.load("../examples/models/3dm/terra_num.3dm", function (object) {
     object.traverse(function (child) {
       if (child instanceof THREE.Mesh) {
         child.material = meshMaterial_c;
@@ -308,7 +307,7 @@ function init() {
   // load results
   for (var i = 1; i <= 12; i++) {
     loader.load(
-      "./models/terra_sunhour_" + i.toString() + ".3dm",
+      "../examples/models/3dm/terra_sunhour_" + i.toString() + ".3dm",
       function (object) {
         object.traverse(function (child) {
           if (child instanceof THREE.Mesh) {
@@ -429,7 +428,7 @@ function init() {
       true
     );
     objLoader2.load(
-      "./models/terra_obj/texture.obj",
+      "../examples/models/obj/terra_obj/texture.obj",
       callbackOnLoad,
       null,
       null,
@@ -439,7 +438,7 @@ function init() {
   };
 
   const mtlLoader = new MTLLoader();
-  mtlLoader.load("./models/terra_obj/texture.mtl", onLoadMtl);
+  mtlLoader.load("../examples/models/obj/terra_obj/texture.mtl", onLoadMtl);
 
   // init stats
   stats = new Stats();
