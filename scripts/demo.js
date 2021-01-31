@@ -421,19 +421,25 @@ function init() {
 
   new MTLLoader()
     .setPath("../examples/models/obj/terra_obj/")
-    .load("texture.mtl", function (materials) {
-      materials.preload();
-      new OBJLoader()
-        .setMaterials(materials)
-        .setPath("../examples/models/obj/terra_obj/")
-        .load("texture.obj", function (object) {
-          object.rotateX(-0.5 * Math.PI);
-          terra = object;
-          scene.add(terra);
-          terra.visible = false;
-          console.log("...terra obj loaded");
-        });
-    });
+    .load(
+      "texture.mtl", 
+      function (materials) {
+        materials.preload();
+        new OBJLoader()
+          .setMaterials(materials)
+          .setPath("../examples/models/obj/terra_obj/")
+          .load(
+            "texture.obj", 
+            function (object) {
+              object.rotateX(-0.5 * Math.PI);
+              terra = object;
+              scene.add(terra);
+              terra.visible = false;
+              console.log("...terra obj loaded");
+            }
+          );
+      }
+    );
 
   // init stats
   stats = new Stats();
