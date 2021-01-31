@@ -11,9 +11,8 @@ import Stats from "../examples/jsm/libs/stats.module.js";
 
 import { GUI } from "../examples/jsm/libs/dat.gui.module.js";
 
+import { OBJLoader } from "../examples/jsm/loaders/OBJLoader.js";
 import { MTLLoader } from "../examples/jsm/loaders/MTLLoader.js";
-import { MtlObjBridge } from "../examples/jsm/loaders/obj2/bridge/MtlObjBridge.js";
-import { OBJLoader2 } from "../examples/jsm/loaders/OBJLoader2.js";
 
 // init variables
 let cameraPersp, cameraOrtho, currentCamera;
@@ -420,34 +419,22 @@ function init() {
   // load obj file
   const objName = "terra";
 
-  const objLoader2 = new OBJLoader2();
-
-  const callbackOnLoad = function (object3d) {
-    object3d.rotateX(-0.5 * Math.PI);
-    terra = object3d;
-    scene.add(terra);
-    terra.visible = false;
-  };
-
-  const onLoadMtl = function (mtlParseResult) {
-    objLoader2.setModelName(objName);
-    objLoader2.setLogging(true, true);
-    objLoader2.addMaterials(
-      MtlObjBridge.addMaterialsFromMtlLoader(mtlParseResult),
-      true
-    );
-    objLoader2.load(
-      "../examples/models/obj/terra_obj/texture.obj",
-      callbackOnLoad,
-      null,
-      null,
-      null
-    );
-    console.log("...terra obj loaded");
-  };
-
-  const mtlLoader = new MTLLoader();
-  mtlLoader.load("../examples/models/obj/terra_obj/texture.mtl", onLoadMtl);
+  // --- try OBJLoader
+  new MTLLoader()
+    .setPath("../examples/models/obj/terra_obj/")
+    .load("texture.mtl", function (materials) {
+      materials.preload();
+      new OBJLoader()
+        .setMaterials(materials)
+        .setPath("../examples/models/obj/terra_obj/")
+        .load("texture.obj", function (object) {
+          object.rotateX(-0.5 * Math.PI);
+          terra = object;
+          scene.add(terra);
+          terra.visible = false;
+          console.log("...terra obj loaded");
+        });
+    });
 
   // init stats
   stats = new Stats();
