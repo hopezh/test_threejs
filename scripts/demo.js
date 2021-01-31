@@ -419,7 +419,6 @@ function init() {
   // load obj file
   const objName = "terra";
 
-  // --- try OBJLoader
   new MTLLoader()
     .setPath("../examples/models/obj/terra_obj/")
     .load("texture.mtl", function (materials) {
