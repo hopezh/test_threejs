@@ -631,10 +631,10 @@ function init() {
     camera = new THREE.PerspectiveCamera(
         50,
         window.innerWidth / window.innerHeight,
-        0.1,
+        0.01,
         10000
     );
-    camera.position.z = 3000;
+    camera.position.z = 2000;
 
     scene = new THREE.Scene();
 
