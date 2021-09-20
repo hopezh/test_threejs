@@ -1,30 +1,112 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>three.js webgl - transform controls</title>
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
-    />
-    <!-- <link type="text/css" rel="stylesheet" href="main.css" /> -->
+    <title>Testing Three.js</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- <link type="text/css" rel="stylesheet" href="main.css"> -->
 
     <style>
-      body {
-        background-color: #353535;
+      a {
+        color: #8ff;
+      }
+
+      #menu {
+        position: absolute;
+        bottom: 20px;
+        width: 100%;
+        text-align: center;
+      }
+
+      .element {
+        width: 120px;
+        height: 160px;
+        box-shadow: 0px 0px 12px rgba(0, 255, 255, 0.5);
+        border: 1px solid rgba(127, 255, 255, 0.25);
+        font-family: Helvetica, sans-serif;
+        text-align: center;
+        line-height: normal;
+        cursor: default;
+        /* background-color: red; */
+      }
+
+      .element:hover {
+        box-shadow: 0px 0px 12px rgba(0, 255, 255, 0.75);
+        border: 10px solid rgba(255, 255, 0, 0.7);
+        /* background-color: rgb(0, 0, 0);  */
+      }
+
+      .element .number {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        font-size: 12px;
+        color: rgba(127, 255, 255, 0.75);
+      }
+
+      .element .symbol {
+        position: absolute;
+        top: 40px;
+        left: 0px;
+        right: 0px;
+        font-size: 60px;
+        font-weight: bold;
+        color: rgba(255, 255, 255, 0.75);
+        text-shadow: 0 0 10px rgba(0, 255, 255, 0.95);
+      }
+
+      .element .details {
+        position: absolute;
+        bottom: 15px;
+        left: 0px;
+        right: 0px;
+        font-size: 12px;
+        color: rgba(127, 255, 255, 0.75);
+      }
+
+      button {
+        color: rgba(127, 255, 255, 0.75);
+        background: transparent;
+        outline: 1px solid rgba(127, 255, 255, 0.75);
+        border: 0px;
+        padding: 5px 10px;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background-color: rgba(0, 255, 255, 0.5);
+      }
+
+      button:active {
+        color: #000000;
+        background-color: rgba(0, 255, 255, 0.75);
       }
     </style>
   </head>
 
-  <body>
-    <!-- <div id="info">
-			"W" translate | "E" rotate | "R" scale | "+/-" adjust size<br />
-			"Q" toggle world/local space |  "Shift" snap to grid<br />
-			"X" toggle X | "Y" toggle Y | "Z" toggle Z | "Spacebar" toggle enabled<br />
-			"C" toggle camera | "V" random zoom
-		</div> -->
+  <body style="background-color: rgb(43, 43, 43)">
+    <div id="info">
+      <a href="https://threejs.org" target="_blank" rel="noopener">three.js</a>
+      css3d - periodic table.
+    </div>
+    <div id="container"></div>
+    <div id="menu">
+      <button id="table">Table</button>
+      <button id="sphere">Sphere</button>
+      <button id="helix">Helix</button>
+      <button id="grid">Grid</button>
+      <button id="column">COLUMN</button>
+      <button id="row">ROW</button>
+      <button id="random">RANDOM</button>
+    </div>
 
-    <script type="module" src="scripts/demo.js"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script
+      id="MathJax-script"
+      async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+    ></script>
+
+    <script type="module" src="scripts/periodic_table.js"></script>
   </body>
-  <body></body>
 </html>
